@@ -3,7 +3,7 @@ var computerChoices = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l
 var wins = 0;
 var losses = 0;
 var guessCount = 9;
-var guessChoices = "";
+var guessChoices = [];
 
 document.onkeyup = function(event) {
 
@@ -15,7 +15,7 @@ document.onkeyup = function(event) {
     if (userGuess === computerGuess) {
       wins++;
       guessCount = 9;
-      guessChoices = "";
+      guessChoices = [];
     } 
     if (userGuess != computerGuess) {
         guessCount --;
@@ -24,7 +24,7 @@ document.onkeyup = function(event) {
     if (guessCount === 0) {
         guessCount = 9;
         losses ++;
-        guessChoices = "";
+        guessChoices = [];
     }
   }
 
