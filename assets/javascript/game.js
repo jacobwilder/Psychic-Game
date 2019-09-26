@@ -5,11 +5,23 @@ var losses = 0;
 var guessCount = 9;
 var guessChoices = [];
 
+var directionsText = document.getElementById("directions-text");
+var winsText = document.getElementById("wins-text");
+var lossText = document.getElementById("loss-text");
+var remainingText = document.getElementById("remaining-text");
+var currentGuessText = document.getElementById("currentguess-text");
+
 document.onkeyup = function(event) {
 
   var userGuess = event.key;
   var computerGuess = computerChoices[Math.floor(Math.random() * computerChoices.length)];
   var alphabet = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z",];
+ 
+  directionsText.textContent = "";
+  winsText.textContent = "Wins: " + wins;
+  lossText.textContent = "Losses: " + losses;
+  remainingText.textContent = "Guesses remaining: " + guessCount;
+  currentGuessText.textContent = "Your guesses so far: " + guessChoices;
 
   if (alphabet.indexOf(userGuess) > -1) {
     if (userGuess === computerGuess) {
@@ -26,15 +38,12 @@ document.onkeyup = function(event) {
         losses ++;
         guessChoices = [];
     }
+
+    directionsText.textContent = "";
+    winsText.textContent = "Wins: " + wins;
+    lossText.textContent = "Losses: " + losses;
+    remainingText.textContent = "Guesses remaining: " + guessCount;
+    currentGuessText.textContent = "Your guesses so far: " + guessChoices;
+
   }
-
-  var html =
-    "<h1>The Psychic Game!</h1>" +
-    "<p>Guess what letter I'm thinking of!</p>" +
-    "<p>Wins: " + wins + "</p>" +
-    "<p>Losses: " + losses + "</p>" +
-    "<p>Guesses Left: " + guessCount + "</p>" +
-    "<p>Your Guesses So Far: " + guessChoices.join(", ") + "</p>";
-      document.querySelector("#game").innerHTML = html;
-
-}
+};
